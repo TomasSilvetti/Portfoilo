@@ -10,7 +10,7 @@ const Projects: React.FC = () => {
       id: '1',
       title: 'HCD Sistema de gestion de documentos',
       description: 'Plataforma de gestion de documentacion para el honorable concejo deliberante de Lules',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe API'],
+      technologies: ['React', 'Node.js', 'PostgreSQL'],
       type: 'web',
       status: 'completed',
       client: 'Honorable Concejo Deliberante de Lules',
@@ -21,26 +21,26 @@ const Projects: React.FC = () => {
     },
     {
       id: '2',
-      title: 'Curso IA',
-      description: 'Plataforma generadora de cursos educativos con IA',
-      technologies: ['React', 'FastAPI', 'PostgreSQL', 'Docker'],
-      type: 'web',
-      status: 'completed',
-      client: 'Reservado',
-      duration: '6 meses',
-      imageUrl: '/images/CursoIA.png',
-      projectUrl: 'https://cursoai.netlify.app',
-      imagePreviewUrl: '/images/CursoIA.png'
-    },
-    {
-      id: '3',
-      title: 'Supermercado El puesto',
-      description: 'E-commerce para supermercado El puesto',
-      technologies: ['Typescript', 'FastAPI', 'Claude API'],
+      title: 'Sys Personal - Version de prueba',
+      description: 'Sistema de gestion de personal: Control asistencia, desempeño, reportes',
+      technologies: ['Next.js', 'Supabase'],
       type: 'web',
       status: 'completed',
       client: 'El puesto Supermercados',
-      duration: '4 meses',
+      duration: '1 mes',
+      imageUrl: '/images/SysPersonal.png',
+      projectUrl: 'https://syspersonal.vercel.app',
+      imagePreviewUrl: '/images/SysPersonal.png'
+    },
+    {
+      id: '3',
+      title: 'Supermercado El puesto - Version de prueba',
+      description: 'E-commerce para supermercado El puesto',
+      technologies: ['React + Vite', 'FastAPI', 'PostgreSQL'],
+      type: 'web',
+      status: 'in-progress',
+      client: 'El puesto Supermercados',
+      duration: '1 mes',
       imageUrl: '/images/supermercado.png',
       projectUrl: '',
       imagePreviewUrl: '/images/supermercado.png'
@@ -48,16 +48,29 @@ const Projects: React.FC = () => {
     {
       id: '4',
       title: 'VibeTeacher',
-      description: 'App para aprender a programar con IA',
-      technologies: ['Typescript', 'FastAPI', 'Claude API'],
+      description: 'App para aprender a programar con Inteligencia artificial',
+      technologies: ['Typescript', 'Inteligencia artificial'],
       type: 'web',
-      status: 'completed',
-      client: 'SalesTech Solutions',
-      duration: '4 meses',
+      status: 'in-progress',
+      client: 'Proyecto Propio',
+      duration: '1 mes - En curso',
       imageUrl: '/images/VibeTeacher.png',
       projectUrl: '',
       imagePreviewUrl: '/images/VibeTeacher.png'
-    }
+    },
+    {
+      id: '5',
+      title: 'Curso IA',
+      description: 'Plataforma generadora de cursos educativos con inteligencia artificial',
+      technologies: [ ' React + FastAPI', 'Docker',  'Inteligencia artificial'],
+      type: 'web',
+      status: 'completed',
+      client: 'Reservado',
+      duration: '2 meses',
+      imageUrl: '/images/CursoIA.png',
+      projectUrl: 'https://cursoai.netlify.app',
+      imagePreviewUrl: '/images/CursoIA.png'
+    },
   ];
 
   const projectsPerPage = 3;
@@ -84,17 +97,17 @@ const Projects: React.FC = () => {
             Nuestros <span className="text-indigo-400">Proyectos</span>
           </h2>
           <p className="text-base text-gray-300 max-w-3xl mx-auto">
-            Explora nuestro trabajo más reciente y soluciones creativas que empujan los límites de la innovación digital
+            Aca puedes ver algunos proyectos de personas que confiaron en nostros. Algunos de ellos son muestras de prueba y algunas funcionalidades no estan disponibles para seguridad de nuestros clientes.
           </p>
         </div>
 
         {/* Projects Grid with Navigation */}
         <div className="relative">
           {/* Navigation Buttons */}
-          <div className="absolute top-6 right-6 z-20 flex gap-3">
+          <div className="absolute top-7 right-6 z-20 flex gap-3">
             <button
               onClick={handlePrevPage}
-              className="p-3 rounded-full border-2 border-gray-400 text-gray-400 hover:border-white hover:text-white transition-all duration-300 hover:bg-white/10 backdrop-blur"
+              className="p-3 rounded-full border-2 border-indigo-400 text-indigo-400 hover:border-white hover:text-white transition-all duration-300 hover:bg-white/10 backdrop-blur"
               aria-label="Página anterior"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,7 +116,7 @@ const Projects: React.FC = () => {
             </button>
             <button
               onClick={handleNextPage}
-              className="p-3 rounded-full border-2 border-gray-400 text-gray-400 hover:border-white hover:text-white transition-all duration-300 hover:bg-white/10 backdrop-blur"
+              className="p-3 rounded-full border-2 border-indigo-400 text-indigo-400 hover:border-white hover:text-white transition-all duration-300 hover:bg-white/10 backdrop-blur"
               aria-label="Siguiente página"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -28,15 +28,22 @@ const Hero: React.FC = () => {
           {/* Left Column - Text Content */}
           <div className="flex flex-col justify-center">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              <span className="block">Soluciones</span>
+              <span className="block">Herramientas</span>
               <span className="block">Digitales</span>
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">
-                Creativas
+                De Calidad
               </span>
             </h1>
 
+            <p className="text-lg md:text-xl text-gray-300 mb-2 max-w-lg leading-relaxed">
+              Nos especializamos en la creacion de herramientas digitales con enfasis en la calidad.
+              
+            </p>
             <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-lg leading-relaxed">
-              Nos especializamos en ofrecer soluciones creativas a problemas empresariales tradicionales o específicos para hacer tus procesos más eficientes.
+            No queremos complicar tus procesos, queremos ahorrarte dolores de cabeza.
+            </p>
+            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-lg leading-relaxed">
+            "Hacer las cosas bien, sino no hacerlas"
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

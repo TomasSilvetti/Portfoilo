@@ -8,24 +8,24 @@ const Services: React.FC = () => {
       title: 'Desarrollo Web',
       description: 'Sitios web personalizados y aplicaciones web construidas con tecnologías modernas.',
       features: [
-        'React/Next.js',
-        'Diseño Responsivo',
-        'Optimizado para SEO',
-        'Enfocado en Rendimiento'
+        'Paginas web modernas',
+        'Diseño adaptable a celulares y tablets',
+        'Posicionamiento en Buscadores',
+        'Optimizado para visibilidad en google',
+        'Servicio al cliente con IA'
       ],
       technologies: ['React', 'fastAPI', 'Tailwind CSS', 'Vite', 'postgreSQL', 'Typescript']
     },
     {
       id: '2',
       title: 'Desarrollo de Bots',
-      description: 'Bots de automatización inteligentes para Discord, Telegram y plataformas personalizadas.',
+      description: 'Bots de automatización inteligentes para servicio al cliente, automatizado con inteligencia artifical',
       features: [
-        'Bots de WhatsApp',
-        'Bots de Discord',
-        'Bots de Telegram',
-        'APIs Personalizadas'
+        'Bots de WhatsApp para negocios',
+        'Servicio al cliente automatico con inteligencia artifical',
+        'Conexion con sistemas existentes'
       ],
-      technologies: ['Python', 'Node.js', 'whatsapp Business API', 'Telegram API']
+      technologies: ['Manejo simple por uno o ningun empleado', 'Servicio al cliente', 'whatsapp Business API', 'Inteligencia artificial']
     },
     {
       id: '3',
@@ -34,20 +34,21 @@ const Services: React.FC = () => {
       features: [
         'Automatización de Flujos de Trabajo',
         'Procesamiento de Datos',
-        'Integración de APIs',
-        'Programación de Tareas'
+        'Automatizacion con inteligencia artifical',
+        'Programación de Tareas',
+        'Conexion con sistemas existentes'
       ],
-      technologies: ['Python', 'FastAPI', 'Node.js', 'RPA']
+      technologies: ['Diagnostico de procesos', 'Propuesta de mejora', 'Automatizazion parcial y compelta']
     },
     {
       id: '4',
       title: 'Consultoría Técnica',
-      description: 'Orientación experta en decisiones tecnológicas y arquitectura de software.',
+      description: 'Orientación experta en decisiones tecnológicas,  arquitectura de software e integracion de inteligencia artifical.',
       features: [
         'Evaluación Tecnológica',
         'Diseño de Arquitectura',
         'Optimización de Rendimiento',
-        'Planificación Estratégica'
+        'Herramientas con Inteligencia Artificial'
       ],
       technologies: ['Análisis', 'Diseño', 'Arquitectura', 'Consultoría']
     },
@@ -71,9 +72,10 @@ const Services: React.FC = () => {
         'Integración de Pagos',
         'Gestión de Inventario',
         'Análisis de Clientes',
+        'Reportes personalizados',
         'Optimizado para Móviles'
       ],
-      technologies: ['React', 'Stripe', 'postgreSQL', 'Node.js']
+      technologies: ['Pagos con tarjetas', 'Analisis de ventas', 'Manejo de inventario', 'Optimizacion con inteligencia artificial']
     }
   ];
 
@@ -99,7 +101,13 @@ const Services: React.FC = () => {
             Soluciones Digitales <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-blue-400">Integrales</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-            Nos especializamos en crear soluciones de software personalizadas que automatizan procesos, mejoran las experiencias del usuario e impulsan el crecimiento empresarial a través de tecnología de vanguardia.
+            Si lo podes explicar, lo podemos hacer. No te gusto como quedo? Lo arreglamos.
+          </p>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            Nuestra prioridad es que te sientas satisfecho con el resultado.
+          </p>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
+            Estas son las herramientas que podemos ofrecerte.
           </p>
         </div>
 
@@ -120,13 +128,13 @@ const Services: React.FC = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                   )}
                   {service.id === '2' && (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                   )}
                   {service.id === '3' && (
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   )}
                   {service.id === '4' && (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12a4 4 0 11-8 0 4 4 0 018 0zM0 8h16M8 4v8m4-6a4 4 0 100 8 4 4 0 000-8z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" />
                   )}
                   {service.id === '5' && (
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
