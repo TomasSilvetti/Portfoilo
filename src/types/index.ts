@@ -10,6 +10,7 @@ export interface Project {
   imageUrl: string;
   projectUrl: string;
   imagePreviewUrl?: string;
+  order?: number;
 }
 
 export interface Service {

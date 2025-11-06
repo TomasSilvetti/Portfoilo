@@ -1,77 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Project } from '../types';
+import { getProjects } from '../utils/projectManager';
 
 const Projects: React.FC = () => {
   const [startIndex, setStartIndex] = useState(0);
+  const [baseProjects, setBaseProjects] = useState<Project[]>([]);
 
-  // Proyectos de ejemplo - estos vendrán de un CMS en el futuro
-  const baseProjects: Project[] = [
-    {
-      id: '1',
-      title: 'HCD Sistema de gestion de documentos',
-      description: 'Plataforma de gestion de documentacion para el honorable concejo deliberante de Lules',
-      technologies: ['React', 'Node.js', 'PostgreSQL'],
-      type: 'web',
-      status: 'completed',
-      client: 'Honorable Concejo Deliberante de Lules',
-      duration: '3 meses',
-      imageUrl: '/images/HCDsys.png',
-      projectUrl: 'https://hcdsys.netlify.app',
-      imagePreviewUrl: '/images/HCDsys.png'
-    },
-    {
-      id: '2',
-      title: 'Sys Personal - Version de prueba',
-      description: 'Sistema de gestion de personal: Control asistencia, desempeño, reportes',
-      technologies: ['Next.js', 'Supabase'],
-      type: 'web',
-      status: 'completed',
-      client: 'El puesto Supermercados',
-      duration: '1 mes',
-      imageUrl: '/images/SysPersonal.png',
-      projectUrl: 'https://syspersonal.vercel.app',
-      imagePreviewUrl: '/images/SysPersonal.png'
-    },
-    {
-      id: '3',
-      title: 'Supermercado El puesto - Version de prueba',
-      description: 'E-commerce para supermercado El puesto',
-      technologies: ['React + Vite', 'FastAPI', 'PostgreSQL'],
-      type: 'web',
-      status: 'in-progress',
-      client: 'El puesto Supermercados',
-      duration: '1 mes',
-      imageUrl: '/images/supermercado.png',
-      projectUrl: '',
-      imagePreviewUrl: '/images/supermercado.png'
-    },
-    {
-      id: '4',
-      title: 'VibeTeacher',
-      description: 'App para aprender a programar con Inteligencia artificial',
-      technologies: ['Typescript', 'Inteligencia artificial'],
-      type: 'web',
-      status: 'in-progress',
-      client: 'Proyecto Propio',
-      duration: '1 mes - En curso',
-      imageUrl: '/images/VibeTeacher.png',
-      projectUrl: '',
-      imagePreviewUrl: '/images/VibeTeacher.png'
-    },
-    {
-      id: '5',
-      title: 'Curso IA',
-      description: 'Plataforma generadora de cursos educativos con inteligencia artificial',
-      technologies: [ ' React + FastAPI', 'Docker',  'Inteligencia artificial'],
-      type: 'web',
-      status: 'completed',
-      client: 'Reservado',
-      duration: '2 meses',
-      imageUrl: '/images/CursoIA.png',
-      projectUrl: 'https://cursoai.netlify.app',
-      imagePreviewUrl: '/images/CursoIA.png'
-    },
-  ];
+  // Cargar proyectos desde localStorage o JSON al montar el componente
+  useEffect(() => {
+    const projects = getProjects();
+    setBaseProjects(projects);
+  }, []);
 
   const projectsPerPage = 3;
   const totalProjects = baseProjects.length;
