@@ -69,7 +69,11 @@ const Projects: React.FC = () => {
             {currentProjects.map((project, index) => (
               <div
                 key={project.id}
-                className="project-card-horizontal group rounded-2xl overflow-hidden shadow-2xl border border-[#1e3a5f] hover:border-indigo-400 transition-all duration-300 hover:shadow-indigo-500/30 hover:shadow-2xl relative h-[450px] md:h-[400px]"
+                className={`project-card-horizontal group rounded-2xl overflow-hidden shadow-2xl border border-[#1e3a5f] transition-all duration-300 relative h-[450px] md:h-[400px] ${
+                  project.isDisabled 
+                    ? 'cursor-not-allowed' 
+                    : 'hover:border-indigo-400 hover:shadow-indigo-500/30 hover:shadow-2xl'
+                }`}
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
                 {/* Background Image */}
@@ -86,6 +90,20 @@ const Projects: React.FC = () => {
 
                 {/* Content Container */}
                 <div className="relative z-10 h-full flex flex-col justify-end p-5 md:p-6">
+
+                {/* Disabled Overlay */}
+                {project.isDisabled && (
+                  <>
+                    <div className="absolute inset-0 bg-gray-900/70 z-10 pointer-events-none" />
+                    <div className="absolute inset-0 z-20 flex items-center justify-center px-6 pointer-events-none">
+                      <div className="bg-black/80 backdrop-blur-sm border-2 border-orange-500 rounded-xl px-6 py-4 text-center">
+                        <p className="text-orange-400 font-bold text-base md:text-lg">
+                          {project.disabledMessage || 'En progreso, sin demo disponible'}
+                        </p>
+                      </div>
+                    </div>
+                  </>
+                )}
                   {/* URL del Proyecto */}
                   <p className="text-indigo-400 text-xs font-semibold mb-2 truncate">
                     {project.projectUrl}
@@ -114,17 +132,29 @@ const Projects: React.FC = () => {
                   </div>
 
                   {/* Action Button */}
-                  <a
-                    href={project.projectUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/50 w-full group-hover:bg-indigo-600"
-                  >
-                    Ver Proyecto
-                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
-                  </a>
+                  {project.isDisabled ? (
+                    <button
+                      disabled
+                      className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-indigo-500 text-white rounded-lg font-semibold text-sm w-full opacity-50 cursor-not-allowed"
+                    >
+                      Ver Proyecto
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </button>
+                  ) : (
+                    <a
+                      href={project.projectUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-indigo-500 hover:bg-indigo-600 text-white rounded-lg font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/50 w-full group-hover:bg-indigo-600"
+                    >
+                      Ver Proyecto
+                      <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

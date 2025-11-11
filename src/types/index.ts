@@ -11,6 +11,8 @@ export interface Project {
   projectUrl: string;
   imagePreviewUrl?: string;
   order?: number;
+  isDisabled?: boolean;
+  disabledMessage?: string;
 }
 
 export interface Service {

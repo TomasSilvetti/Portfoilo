@@ -23,6 +23,8 @@ const NewProject: React.FC = () => {
     imageUrl: '',
     projectUrl: '',
     imagePreviewUrl: '',
+    isDisabled: false,
+    disabledMessage: '',
   });
 
   const [showSuccess, setShowSuccess] = useState(false);
@@ -42,10 +44,11 @@ const NewProject: React.FC = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target;
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
     setFormData(prev => ({
       ...prev,
-      [name]: value,
+      [name]: type === 'checkbox' ? checked : value,
     }));
   };
 
@@ -69,6 +72,8 @@ const NewProject: React.FC = () => {
       imageUrl: formData.imageUrl,
       projectUrl: formData.projectUrl,
       imagePreviewUrl: formData.imagePreviewUrl || formData.imageUrl,
+      isDisabled: formData.isDisabled,
+      disabledMessage: formData.disabledMessage || undefined,
     };
 
     const success = addProject(projectData);
@@ -90,6 +95,8 @@ const NewProject: React.FC = () => {
         imageUrl: '',
         projectUrl: '',
         imagePreviewUrl: '',
+        isDisabled: false,
+        disabledMessage: '',
       });
 
       // Recargar proyectos
@@ -153,8 +160,9 @@ const NewProject: React.FC = () => {
   ) => {
     if (!editingProject) return;
     
-    const { name, value } = e.target;
-    setEditingProject(prev => prev ? { ...prev, [name]: value } : null);
+    const { name, value, type } = e.target;
+    const checked = (e.target as HTMLInputElement).checked;
+    setEditingProject(prev => prev ? { ...prev, [name]: type === 'checkbox' ? checked : value } : null);
   };
 
   const handleDeleteClick = (projectId: string) => {
@@ -255,9 +263,16 @@ const NewProject: React.FC = () => {
 
                     {/* Contenido */}
                     <div className="p-5">
-                      <h3 className="text-xl font-bold text-white mb-2 line-clamp-1">
-                        {project.title}
-                      </h3>
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <h3 className="text-xl font-bold text-white line-clamp-1 flex-1">
+                          {project.title}
+                        </h3>
+                        {project.isDisabled && (
+                          <span className="px-2 py-1 bg-orange-500/20 border border-orange-500 text-orange-400 rounded text-xs font-semibold whitespace-nowrap">
+                            Deshabilitado
+                          </span>
+                        )}
+                      </div>
                       <p className="text-gray-300 text-sm mb-3 line-clamp-2">
                         {project.description}
                       </p>
@@ -511,6 +526,46 @@ const NewProject: React.FC = () => {
                   />
                 </div>
 
+                {/* Deshabilitar proyecto */}
+                <div className="md:col-span-2">
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      name="isDisabled"
+                      checked={formData.isDisabled}
+                      onChange={handleChange}
+                      className="w-5 h-5 bg-[#0a192f] border border-gray-600 rounded text-indigo-600 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-0 cursor-pointer"
+                    />
+                    <span className="text-sm font-medium text-gray-300">
+                      Deshabilitar proyecto (sin demo disponible)
+                    </span>
+                  </label>
+                  <p className="text-gray-500 text-xs mt-2 ml-8">
+                    El proyecto se mostrará con un overlay gris y un mensaje personalizado
+                  </p>
+                </div>
+
+                {/* Mensaje personalizado cuando está deshabilitado */}
+                {formData.isDisabled && (
+                  <div className="md:col-span-2">
+                    <label htmlFor="disabledMessage" className="block text-sm font-medium text-gray-300 mb-2">
+                      Mensaje para proyecto deshabilitado
+                    </label>
+                    <input
+                      type="text"
+                      id="disabledMessage"
+                      name="disabledMessage"
+                      value={formData.disabledMessage}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-[#0a192f] border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50 transition-all"
+                      placeholder="En progreso, sin demo disponible"
+                    />
+                    <p className="text-gray-500 text-xs mt-1">
+                      Si se deja vacío, se mostrará el mensaje por defecto: "En progreso, sin demo disponible"
+                    </p>
+                  </div>
+                )}
+
                 {/* Vista previa de imagen */}
                 {formData.imageUrl && (
                   <div className="md:col-span-2">
@@ -731,6 +786,46 @@ const NewProject: React.FC = () => {
                     required
                   />
                 </div>
+
+                {/* Deshabilitar proyecto */}
+                <div className="md:col-span-2">
+                  <label className="flex items-center gap-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      name="isDisabled"
+                      checked={editingProject.isDisabled || false}
+                      onChange={handleEditChange}
+                      className="w-5 h-5 bg-[#0a192f] border border-gray-600 rounded text-indigo-600 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-0 cursor-pointer"
+                    />
+                    <span className="text-sm font-medium text-gray-300">
+                      Deshabilitar proyecto (sin demo disponible)
+                    </span>
+                  </label>
+                  <p className="text-gray-500 text-xs mt-2 ml-8">
+                    El proyecto se mostrará con un overlay gris y un mensaje personalizado
+                  </p>
+                </div>
+
+                {/* Mensaje personalizado cuando está deshabilitado */}
+                {editingProject.isDisabled && (
+                  <div className="md:col-span-2">
+                    <label htmlFor="edit-disabledMessage" className="block text-sm font-medium text-gray-300 mb-2">
+                      Mensaje para proyecto deshabilitado
+                    </label>
+                    <input
+                      type="text"
+                      id="edit-disabledMessage"
+                      name="disabledMessage"
+                      value={editingProject.disabledMessage || ''}
+                      onChange={handleEditChange}
+                      className="w-full px-4 py-3 bg-[#0a192f] border border-gray-600 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/50 transition-all"
+                      placeholder="En progreso, sin demo disponible"
+                    />
+                    <p className="text-gray-500 text-xs mt-1">
+                      Si se deja vacío, se mostrará el mensaje por defecto: "En progreso, sin demo disponible"
+                    </p>
+                  </div>
+                )}
 
                 {/* Vista previa de imagen */}
                 {editingProject.imageUrl && (
